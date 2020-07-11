@@ -1,4 +1,12 @@
-/node_modules/
-/public/build/
-
-.DS_Store
+.idea
+.ipynb_checkpoints
+.RData
+.Rhistory
+*.Rproj*
+*html
+blogdown
+dist
+node_modules
+public
+Videos
+.Rproj.user
