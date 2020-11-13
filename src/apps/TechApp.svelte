@@ -8,12 +8,15 @@
 	let view;
 	$: view = pin ? pin.replace(/\d(?!$)/g, '*') : 'enter your pin';
 
-	let azureFunctionURL = "https://azure-functions-api-20201113142914242.azurewebsites.net/api/message?code=k8YsLlyJaTDVJZhzVnShRDkjAs1vokip1eiBvRFBdMZiJkyzDlWTsA=="
+	let azureFunctionURL = "/api/graphql/$PARAMS"
+	// following does not work because CORS disallowed on Azure Functions by default...
+	// let azureFunctionURL = "https://azure-functions-api-20201113142914242.azurewebsites.net/api/message$PARAMScode=k8YsLlyJaTDVJZhzVnShRDkjAs1vokip1eiBvRFBdMZiJkyzDlWTsA=="
 
 	function handleSubmit () {
 		(async function() {
 			try {
-				let {text} = await (await fetch((!!pin) ? azureFunctionURL +'?name=' + pin : azureFunctionURL)).json();
+				let {text} = await (await fetch(azureFunctionURL.replace('$PARAMS', (!!pin) ? '?name=' + pin : ''))).json();
+				// let {text} = await (await fetch(azureFunctionURL.replace('$PARAMS', (!!pin) ? '?name=' + pin +'&' : '?')).json();
 				document.querySelector('#name').textContent = text;
 
 			} catch (e) {
