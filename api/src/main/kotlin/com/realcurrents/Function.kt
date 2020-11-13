@@ -34,7 +34,7 @@ class Function {
                     .createResponseBuilder(HttpStatus.OK)
                     .body("""
 {
-  text: "Hello, $name, from the API"
+  text: "Hello, ${name}, from the API"
 }
 """.trimIndent()
                 )
