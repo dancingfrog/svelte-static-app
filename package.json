@@ -1,14 +1,6 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "lint": "eslint src",
-    "prebuild": "rimraf dist",
-    "start": "Rscript src/start.R; echo 'servr has stopped'",
-    "start:dev": "rollup -c -w"
-  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -64,5 +56,13 @@
   },
   "resolutions": {
     "natives": "1.1.6"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "eslint src",
+    "prebuild": "rimraf dist",
+    "start": "Rscript src/start.R; echo 'servr has stopped'",
+    "start:dev": "rollup -c -w"
   }
 }
