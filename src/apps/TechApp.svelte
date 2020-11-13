@@ -8,8 +8,18 @@
 	let view;
 	$: view = pin ? pin.replace(/\d(?!$)/g, '*') : 'enter your pin';
 
-	function handleSubmit() {
-		alert(`submitted ${pin}`);
+	function handleSubmit () {
+		(async function() {
+			try {
+				let {text} = await (await fetch((!!pin) ? `/api/message?name=${pin}` : `/api/message`)).json();
+				document.querySelector('#name').textContent = text;
+
+			} catch (e) {
+				console.error(e);
+			}
+		}());
+
+		console.log(`submitted ${pin}`);
 	}
 
 	import * as GL from '@sveltejs/gl';
@@ -23,7 +33,7 @@
 
 	const light = {};
 
-	onMount(() => {
+	onMount(async () => {
 		let frame;
 
 		const loop = () => {
@@ -178,3 +188,9 @@
 	<h1 style="color: {pin ? '#999' : '#fff'}">{view}</h1>
 	<Keypad bind:value={pin} on:submit={handleSubmit}/>
 </div>
+
+<br />
+<br />
+<br />
+
+<p>Loading content from Azure Function API: <b id="name">...</b></p>
