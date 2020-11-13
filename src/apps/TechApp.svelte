@@ -8,10 +8,12 @@
 	let view;
 	$: view = pin ? pin.replace(/\d(?!$)/g, '*') : 'enter your pin';
 
+	let azureFunctionURL = "https://azure-functions-api-20201113142914242.azurewebsites.net/api/message?code=k8YsLlyJaTDVJZhzVnShRDkjAs1vokip1eiBvRFBdMZiJkyzDlWTsA=="
+
 	function handleSubmit () {
 		(async function() {
 			try {
-				let {text} = await (await fetch((!!pin) ? `/api/message?name=${pin}` : `/api/message`)).json();
+				let {text} = await (await fetch((!!pin) ? azureFunctionURL +'?name=' + pin : azureFunctionURL)).json();
 				document.querySelector('#name').textContent = text;
 
 			} catch (e) {
