@@ -20,7 +20,13 @@
 
 			kbEvent.preventDefault();
 
-		} else if (47 < kbEvent['keyCode'] && kbEvent['keyCode'] < 52) { // numbers
+		} else if (kbEvent['keyCode'] === 8 || kbEvent['keyCode'] === 46) { // Backspace or Delete
+
+			clear();
+
+			kbEvent.preventDefault();
+
+		} else if (47 < kbEvent['keyCode'] && kbEvent['keyCode'] < 58) { // numbers
 
 			value = `${value}${kbEvent['key']}`;
 			console.log(value);
