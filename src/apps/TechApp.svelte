@@ -8,7 +8,7 @@
 	let view;
 	$: view = pin ? pin.replace(/\d(?!$)/g, '*') : 'enter your pin';
 
-	let azureFunctionURL = "/api/graphql/$PARAMS"
+	let azureFunctionURL = "/api/message/$PARAMS"
 	// following does not work because CORS disallowed on Azure Functions by default...
 	// let azureFunctionURL = "https://azure-functions-api-20201113142914242.azurewebsites.net/api/message$PARAMScode=k8YsLlyJaTDVJZhzVnShRDkjAs1vokip1eiBvRFBdMZiJkyzDlWTsA=="
 

@@ -1,13 +1,12 @@
-module.exports = async (context, req) => {
+module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     const name = (req.query.name || (req.body && req.body.name));
     const responseMessage = name ?
-`{
+        `{
     "text": "Hello, ${name}, from the API"
-}`
-        :
-`{
+}`:
+        `{
     "text": "Hello from the API"
 }`;
 
@@ -15,4 +14,4 @@ module.exports = async (context, req) => {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
     };
-};
+}
