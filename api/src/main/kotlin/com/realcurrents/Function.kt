@@ -22,7 +22,7 @@ class Function {
                     name = "req",
                     methods = [HttpMethod.GET, HttpMethod.POST],
                     authLevel = AuthorizationLevel.FUNCTION) request: HttpRequestMessage<Optional<String>>,
-            context: ExecutionContext): HttpResponseMessage {
+            con"text": ExecutionContext): HttpResponseMessage {
 
         context.logger.info("HTTP trigger processed a ${request.httpMethod.name} request.")
 
@@ -34,7 +34,7 @@ class Function {
                     .createResponseBuilder(HttpStatus.OK)
                     .body("""
 {
-  text: "Hello, ${name}, from the API"
+  "text": "Hello, ${name}, from the API"
 }
 """.trimIndent()
                 )
@@ -45,7 +45,7 @@ class Function {
                 .createResponseBuilder(HttpStatus.OK)
                 .body("""
 {
-  text: "Hello from the API"
+  "text": "Hello from the API"
 }
 """.trimIndent()
                 )

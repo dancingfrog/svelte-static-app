@@ -4,11 +4,11 @@ module.exports = async (context, req) => {
     const name = (req.query.name || (req.body && req.body.name));
     const responseMessage = name ?
 `{
-    text: "Hello, ${name}, from the API"
+    "text": "Hello, ${name}, from the API"
 }`
         :
 `{
-    text: "Hello from the API"
+    "text": "Hello from the API"
 }`;
 
     context.res = {
